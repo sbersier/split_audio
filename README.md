@@ -18,23 +18,6 @@ The file is 30 min and 46 sec.
 
 In order to train a voice, the samples should be less than ~10 sec (cf Notes on https://github.com/voicepaw/so-vits-svc-fork) and typically more than one second.
 
-Now, SVC comes with a splitter: `svc pre-split`
-
-Below, an example with the file above-mentioned using the default options in `svc pre-split`
-
-The smallest file is 1.2 sec long with 0.4 sec of audio, while the longest is 29 seconds with quiet a lot of files longer than 10 sec.
-
-Histogram of the resulting lengths:
-
-(figure)
-
-You can probably achieve a more satisfying result by adjusting the options.
-
-I don't know how it impacts training's performance, but I would prefer to have more or less standardized samples. (It might well be that there is nothing to gain there, I don't know...)
-
-So, I made my own audio splitter: `split_audio.py` (see code below)
-
-
 WHAT DOES IT DO?
 
 A) First, it will apply a loudness normalization to the audio, convert it to 44100 Hz, apply a high-pass filter (>60 Hz), apply a noise gate (to minimize the noise between two sentences), apply a second normalization specific to speech.
