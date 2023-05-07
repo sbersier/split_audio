@@ -76,7 +76,7 @@ Min audio chunk duration [sec]    :   3.26
 In this case, I asked for 6 seconds chunks (average). The original length of the input file was 30 min and 46 seconds. The resulting audio duration is 22 min 15 sec because long silences were trimmed down to 0.5 sec (the default) "Durations CFI" means, in this case, that 95% of the produced chunks have a duration between 4 and 8 seconds. The max duration is 9.36 sec and the min is 3.26 sec.  (CI="Confidence Interval", CL="Confidence Level") Note: Because there is a minimum and maximum durations specified (by default: 2 sec and 10 sec), it may happen that a bit of is dropped. If you want to keep absolutely everything, you can set the options: --min_duration 0  and --max_duration 9999
 
 I recommend to keep the default options to begin with. 
-If don't keep the default threshold and want to set your own, keep an eye on the terminal output. You might see messages telling you that some chunks have been dropped because of min_duration or max_duration. As long as it doesn't represent a significative loss, it is OK.
+If don't keep the default threshold (-35 dB) and want to set your own, keep an eye on the terminal output. You might see messages telling you that some chunks have been dropped because of min_duration or max_duration. As long as it doesn't represent a significative loss, it is OK.
 The messages look like this:
 ```
 Nb. rejected (duration < min)     :      1
@@ -102,14 +102,14 @@ options:
   -d DESIRED_DURATION, --desired_duration DESIRED_DURATION
                         desired average duration [sec] (default: 7)
   -t THRESHOLD, --threshold THRESHOLD
-                        silence threshold in dB below max (>0) (default: 35)
+                        silence threshold in dB below max (<0) (default: -35)
   -s SILENCE, --silence SILENCE
                         max silence duration for trimming [sec] (default: 0.5)
-  -v VERBOSE, --verbose VERBOSE
-                        [true/false] verbose ffmpeg outputs (default: false) (optional)
-  -k KEEP, --keep KEEP  [true/false] don't remove temporary files (default: false)
+  --verbose             ask for verbose ffmpeg outputs (default: false)
+  --keep                don't remove temporary files
   -n NO_PROCESSING, --no_processing NO_PROCESSING
                         skip pre-processing (default: false)
+
 ```
 
 
