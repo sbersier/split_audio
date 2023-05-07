@@ -1,4 +1,4 @@
-# split_audio
+# split_audio.py
 Split long speech files into chunks with given average duration in conjonction with svc (so-vits-svc-fork)(https://github.com/voicepaw/so-vits-svc-fork)
 
 IMPORTANT NOTE:
