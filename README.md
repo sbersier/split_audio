@@ -33,15 +33,13 @@ I have the above mentioned mp3 file from librivox in the TEST/ folder
 ```
 python split_audio.py --desired_duration 6 -o my_chunks TEST/beckoningfairone_08_onions_128kb.mp3
 ```
-will convert the mp3 to wav then proceed. 
-
 Here, the histogram of the durations for the input file:
 
 ![alt text](https://github.com/sbersier/split_audio/blob/main/audio_split.png?raw=true)
 
 NOTES:
 
-1) If the audio is not in .WAV it will make a .wav copy of the input file next to the original file
+1) If the audio is not in ".wav" it will convert and save it as a ".wav" copy of the input file next to the original file
 2) It assumes that all the relevant audio is contained in one file, say: some_long_audio.mp3
 If your audio is scattered among different files, you can concatenate them using ffmpeg or in Audacity.
 
