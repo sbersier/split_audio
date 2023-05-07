@@ -76,7 +76,7 @@ Min audio chunk duration [sec]    :   3.26
 In this case, I asked for 6 seconds chunks (average). The original length of the input file was 30 min and 46 seconds. The resulting audio duration is 22 min 15 sec because long silences were trimmed down to 0.5 sec (the default) "Durations CFI" means, in this case, that 95% of the produced chunks have a duration between 4 and 8 seconds. The max duration is 9.36 sec and the min is 3.26 sec.  (CI="Confidence Interval", CL="Confidence Level") Note: Because there is a minimum and maximum durations specified (by default: 2 sec and 10 sec), it may happen that a bit of is dropped. If you want to keep absolutely everything, you can set the options: --min_duration 0  and --max_duration 9999
 
 I recommend to keep the default options to begin with. 
-
+If don't keep the default threshold and want to set your own, keep an eye on the terminal output. You might see
 For the options:
 ```
 python split_audio.py --help
