@@ -105,11 +105,8 @@ options:
                         silence threshold in dB below max (<0) (default: -35)
   -s SILENCE, --silence SILENCE
                         max silence duration for trimming [sec] (default: 0.5)
-  --verbose             ask for verbose ffmpeg outputs (default: false)
   --keep                don't remove temporary files
-  -n NO_PROCESSING, --no_processing NO_PROCESSING
-                        skip pre-processing (default: false)
-
+  --no_processing       skip PRE-processing
 ```
 
 
