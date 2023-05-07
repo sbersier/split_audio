@@ -20,7 +20,7 @@ WHAT DOES IT DO?
 A) First, it will apply a loudness normalization to the audio, convert it to 44100 Hz, apply a high-pass filter (>60 Hz), apply a noise gate (to minimize the noise between two sentences), apply a second normalization specific to speech.
 Note: You can skip this with the `--no_process True` option 
 
-B) After all this is done, it will:
+B) Then it will:
 
 a) Trim silences. All silences > 0.5 sec will be trimmed down to 0.5 sec (default value). The silence duration as well as the threshold are adjustable but I would advise to keep the default.
 
