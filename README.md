@@ -35,7 +35,7 @@ python split_audio.py --desired_duration 6 -o my_chunks TEST/beckoningfairone_08
 ```
 will convert the mp3 to wav then proceed. 
 
-Here, the corresponding histogram for the same input file:
+Here, the histogram of the durations for the input file:
 
 ![alt text](https://github.com/sbersier/split_audio/blob/main/audio_split.png?raw=true)
 
