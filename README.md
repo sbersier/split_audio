@@ -37,7 +37,7 @@ will convert the mp3 to wav then proceed.
 
 Here, the corresponding histogram for the same input file:
 
-(figure)
+![alt text](https://github.com/sbersier/split_audio/blob/main/audio_split.png?raw=true)
 
 NOTES:
 
