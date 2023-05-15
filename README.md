@@ -18,7 +18,7 @@ In order to train a voice, the samples should be less than ~10 sec (cf Notes on 
 WHAT DOES IT DO?
 
 A) First, it will apply a loudness normalization to the audio, convert it to 44100 Hz, apply a high-pass filter (>60 Hz), apply a noise gate (to minimize the noise between two sentences), apply a second normalization specific to speech.
-Note: You can skip this with the `--no_process True` option 
+Note: You can skip this with the `--no_process true` option 
 
 B) Then it will:
 
