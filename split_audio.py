@@ -95,7 +95,7 @@ if not args.no_processing:
     process = subprocess.run(cmd, capture_output=True)
 
     # highpass at 30 Hz to avoied denormalized signals, noise gate with 250ms release, speechnorm
-    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.1.wav', '-af','highpass=f=60,agate=release='+str(max_silence/2*1000)+':threshold=-35dB, speechnorm=e=1.5:r=0.00001:l=1','output.tmp.2.wav']
+    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.1.wav', '-af','highpass=f=80,agate=release='+str(max_silence/2*1000)+':threshold=-35dB, speechnorm=e=1.5:r=0.00001:l=1','output.tmp.2.wav']
     process = subprocess.run(cmd, capture_output=True)
 
     # trim silences
