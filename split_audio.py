@@ -188,7 +188,7 @@ for i in range(len(S)-1):
         if duration<calc_min_duration:
             calc_min_duration=duration
         durations.append((end-start)/sr)
-        name=outputFolder+os.sep+str(i).zfill(8)+'.wav'
+        name=outputFolder+os.sep+str(int(start)).zfill(10)+'_'+str(int(start)).zfill(10)+'.wav'
         intervals.append([start,end])
         sf.write(name, y[start:end+1], sr)
     else:        
