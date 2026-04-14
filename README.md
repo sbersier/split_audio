@@ -24,7 +24,8 @@ B) Then it will:
 
 a) Trim silences. All silences > 0.5 sec will be trimmed down to 0.5 sec (default value). The silence duration as well as the threshold are adjustable but I would advise to keep the default.
 
-b) Split the input file into audio chunks with the desired average duration (the default is 5 seconds) and put them into the output folder located in the same folder as the audio. If the folder doesn't exist it will create it. If it exists, it will delete it and recreate it.
+b) Split the input file into audio chunks with the desired average duration (the default is 5 seconds) and put them into the output folder located in the same folder as the audio. If the folder doesn't exist it will create it. If it exists, it will delete it and recreate it. The chunks are named "{starting frame}_{ending_frame}.wav"
+
 You can specify a minimal duration (default: 2 sec) and a maximal duration (default: 10 sec). 
 
 Let's take an example:
