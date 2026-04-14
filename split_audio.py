@@ -10,7 +10,7 @@ import argparse
 import time
 
 # split_audio.py uses ffmpeg which must be available from command line
-# You migh have to change the ffmpeg_command depending on your platform (?)
+# You might have to change the ffmpeg_command depending on your platform (?)
 # The default is "ffmpeg" (assumes standard ffmpeg installation on Linux)
 #    
 #
