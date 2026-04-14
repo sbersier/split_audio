@@ -17,7 +17,7 @@ In order to train a voice, the samples should be less than ~10 sec (cf Notes on 
 
 WHAT DOES IT DO?
 
-A) First, it will apply a loudness normalization to the audio, convert it to the output's requested samplerate (default: 44100 Hz), apply a high-pass filter (>80 Hz), apply a noise gate (to minimize the noise between two sentences), apply a second normalization specific to speech.
+A) First, it will apply a loudness normalization to the audio, convert it to the desired output samplerate (default: 44100 Hz), apply a high-pass filter (>80 Hz), apply a noise gate (to minimize the noise between two sentences), apply a second normalization specific to speech.
 Note: You can skip this with the `--no_process true` option 
 
 B) Then it will:
@@ -94,7 +94,7 @@ options:
   -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
                         name of output folder (default: processed)
   -r SAMPLERATE, --samplerate SAMPLERATE
-                        samplerate (default: 44100 Hz)
+                        desired output samplerate (default: 44100 Hz)
   -m MIN_DURATION, --min_duration MIN_DURATION
                         min duration [sec] (default: 2)
   -l MAX_DURATION, --max_duration MAX_DURATION
