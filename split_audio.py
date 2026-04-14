@@ -28,6 +28,7 @@ ffmpeg_command='ffmpeg' # FFMPEG command (works on Linux)
 argParser = argparse.ArgumentParser()
 argParser.add_argument("input_file", help="input wav audio file", type=str)
 argParser.add_argument("-o", "--output_folder", help="name of output folder (default: processed)", type=str,default='processed')
+argParser.add_argument("-r", "--samplerate", help="samplerate (default: 44100)", type=float, default=44100)
 argParser.add_argument("-m", "--min_duration", help="min duration [sec] (default: 2)", type=float, default=2)
 argParser.add_argument("-l", "--max_duration", help="max duration [sec] (default: 10)", type=float, default=10)
 argParser.add_argument("-d", "--desired_duration", help="desired average duration [sec] (default: 7)", type=float, default=5)
@@ -91,7 +92,7 @@ if not args.no_processing:
     process = subprocess.run(cmd, capture_output=True)
 
     # Resample at 44100 Hz
-    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.0.wav','-ar','44100', 'output.tmp.1.wav']
+    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.0.wav','-ar ',str(samplerate), ' output.tmp.1.wav']
     process = subprocess.run(cmd, capture_output=True)
 
     # highpass at 30 Hz to avoied denormalized signals, noise gate with 250ms release, speechnorm
