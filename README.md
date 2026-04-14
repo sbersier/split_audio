@@ -84,7 +84,7 @@ Nb. rejected (duration > max)     :     10
 For the options:
 ```
 python split_audio.py --help
-usage: split_audio.py [-h] [-o OUTPUT_FOLDER] [-m MIN_DURATION] [-l MAX_DURATION] [-d DESIRED_DURATION] [-t THRESHOLD] [-s SILENCE] [-v VERBOSE] [-k KEEP] [-n NO_PROCESSING] input_file
+usage: split_audio.py [-h] [-o OUTPUT_FOLDER] [-i] [-r RATE] [-m MIN_DURATION] [-l MAX_DURATION] [-d DESIRED_DURATION] [-t THRESHOLD] [-s SILENCE] [--keep] [--no_processing] input_file
 
 positional arguments:
   input_file            input wav audio file
@@ -93,8 +93,8 @@ options:
   -h, --help            show this help message and exit
   -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
                         name of output folder (default: processed)
-  -r SAMPLERATE, --samplerate SAMPLERATE
-                        desired output samplerate (default: 44100 Hz)
+  -i, --intervals       output the list of intervals in "intervals.txt")
+  -r RATE, --rate RATE  desired output samplerate (default: 44100 Hz)
   -m MIN_DURATION, --min_duration MIN_DURATION
                         min duration [sec] (default: 2)
   -l MAX_DURATION, --max_duration MAX_DURATION
