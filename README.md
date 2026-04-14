@@ -84,7 +84,9 @@ Nb. rejected (duration > max)     :     10
 For the options:
 ```
 python split_audio.py --help
-usage: split_audio.py [-h] [-o OUTPUT_FOLDER] [-i] [-r RATE] [-m MIN_DURATION] [-l MAX_DURATION] [-d DESIRED_DURATION] [-t THRESHOLD] [-s SILENCE] [--keep] [--no_processing] input_file
+usage: split_audio.py [-h] [-o OUTPUT_FOLDER] [-i] [-r RATE] [-m MIN_DURATION] [-l MAX_DURATION]
+                      [-d DESIRED_DURATION] [-t THRESHOLD] [-s SILENCE] [--keep]
+                      [--no_processing] input_file
 
 positional arguments:
   input_file            input wav audio file
