@@ -1,5 +1,5 @@
 # split_audio.py
-Split long speech files into chunks with given average duration in conjonction with svc (so-vits-svc-fork)(https://github.com/voicepaw/so-vits-svc-fork)
+Split long speech files into chunks with apecified average, minimum and maximumum duration. It looks for silences and uses them to segment cleanly the original file. 
 
 IMPORTANT NOTE:
 For this to work you need to be able run ffmpeg as command from within Python with the subprocess library. 
