@@ -28,13 +28,14 @@ ffmpeg_command='ffmpeg' # FFMPEG command (works on Linux)
 argParser = argparse.ArgumentParser()
 argParser.add_argument("input_file", help="input wav audio file", type=str)
 argParser.add_argument("-o", "--output_folder", help="name of output folder (default: processed)", type=str,default='processed')
-argParser.add_argument("-r", "--samplerate", help="desired output samplerate (default: 44100 Hz)", type=float, default=44100)
+argParser.add_argument("-i", dest="list_intervals", help="output the list of intervals in \"intervals.txt\")",action='store_true', default=False)
+argParser.add_argument("-r", "--rate", help="desired output samplerate (default: 44100 Hz)", type=float, default=44100)
 argParser.add_argument("-m", "--min_duration", help="min duration [sec] (default: 2)", type=float, default=2)
 argParser.add_argument("-l", "--max_duration", help="max duration [sec] (default: 10)", type=float, default=10)
 argParser.add_argument("-d", "--desired_duration", help="desired average duration [sec] (default: 7)", type=float, default=5)
 argParser.add_argument("-t", "--threshold", help="silence threshold in dB below max (<0) (default: -35)", type=float, default=-35)
 argParser.add_argument("-s", "--silence", help="max silence duration for trimming [sec] (default: 0.5)", type=float,default=0.5)
-argParser.add_argument("--keep", dest="keep", help="don\'t remove temporary files",action='store_false', default=True)
+argParser.add_argument("--keep", dest="keep", help="don\'t remove temporary files",action='store_true', default=False)
 argParser.add_argument("--no_processing", dest="no_processing", help="skip PRE-processing",action="store_true")
 argParser.set_defaults(no_processing=False)
 
@@ -78,6 +79,7 @@ desired_duration=args.desired_duration
 min_duration=args.min_duration
 max_duration=args.max_duration
 top_db=args.threshold
+rate=args.rate
 
 if min_duration<0 or max_duration<0 or max_silence<0:
     print('ERROR: Durations [sec] should be positive.')
@@ -92,7 +94,7 @@ if not args.no_processing:
     process = subprocess.run(cmd, capture_output=True)
 
     # Resample at 44100 Hz
-    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.0.wav','-ar ',str(samplerate), ' output.tmp.1.wav']
+    cmd=[ffmpeg_command, '-y', '-i', 'output.tmp.0.wav','-ar',str(int(rate)), 'output.tmp.1.wav']
     process = subprocess.run(cmd, capture_output=True)
 
     # highpass at 30 Hz to avoied denormalized signals, noise gate with 250ms release, speechnorm
@@ -173,7 +175,7 @@ rejected_long=0
 Nchunks=0
 calc_max_duration=-1e10
 calc_min_duration=+1e10
-
+intervals=[]
 for i in range(len(S)-1):
     Nchunks+=1
     start=S[i]
@@ -187,7 +189,7 @@ for i in range(len(S)-1):
             calc_min_duration=duration
         durations.append((end-start)/sr)
         name=outputFolder+os.sep+str(i).zfill(8)+'.wav'
-        
+        intervals.append([start,end])
         sf.write(name, y[start:end+1], sr)
     else:        
         if duration>0 and duration<min_duration:   # It may happen that 2 Points collide but it doesn't result in loss of audio
@@ -195,7 +197,10 @@ for i in range(len(S)-1):
         if duration>max_duration:
             rejected_long+=1
 Nchunks=Nchunks-rejected_short-rejected_long
-       
+
+
+
+intervals=np.array(intervals)       
 print('*'*64)
 print('Input file: ', File)
 print('-'*64)
@@ -211,6 +216,8 @@ if rejected_long>0:
     print('Nb. rejected (duration > max)     : ',"{:5}".format(rejected_long))
 print('-'*64)        
 print()
-
-
-
+if args.list_intervals:
+    print('Output list of intervals [starting frame, ending frame] in \"intervals.txt\""')
+    with open('intervals.txt','w') as f:
+        for l in intervals:
+            print(str(l[0])+'\t'+ str(l[1]), file=f)
